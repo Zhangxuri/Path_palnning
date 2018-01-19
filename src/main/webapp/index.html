@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>BootstrapValidator demo</title>
+
+    <link rel="stylesheet" href="resources/css/bootstrap.css"/>
+    <link rel="stylesheet" href="resources/css/bootstrap-table.css">
+    <link rel="stylesheet" href="resources/css/bootstrapValidator.css"/>
+
+    <script type="text/javascript" src="resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap-table-locale-all.js"></script>
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <!-- form: -->
+        <section>
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="page-header">
+                    <h2>订单列表</h2>
+                </div>
+                <table id="tableResver"
+                       class="table table-striped"
+                       data-toggle="table"
+                       data-show-columns="true"
+                       data-search="true"
+                       data-show-refresh="true"
+                       data-show-toggle="true"
+                       data-pagination="true"
+                       data-page-size="10"
+                       data-cache="false">
+                    <thead>
+                    <tr>
+                        <th data-field="id">编号</th>
+                        <th data-field="address">地址</th>
+
+                        <th data-field="product">产品编号</th>
+                        <th data-field="sendname">收件人</th>
+                        <th data-field="sendtel">收件人电话</th>
+                        <th data-visible="false" data-field="meetingId">id</th>
+                        <th data-visible="false" data-field="peopleNum">num</th>
+                        <th data-visible="false" data-field="meetingNotes">notes</th>
+                        <th data-visible="false" data-field="data">notes</th>
+                        <th data-events="operateEvent" class="col-xs-2" data-field="operation"
+                            data-formatter="operateFormatter">操作
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+                <div class="page-header">
+                    <h2>产品列表</h2>
+                </div>
+                <table id="tableResver1"
+                       class="table table-striped"
+                       data-toggle="table"
+                       data-show-columns="true"
+                       data-search="true"
+                       data-show-refresh="true"
+                       data-show-toggle="true"
+                       data-pagination="true"
+                       data-page-size="10"
+                       data-cache="false">
+                    <thead>
+                    <tr>
+                        <th data-field="id">编号</th>
+                        <th data-field="name">型号</th>
+                        <th data-field="money">参考价</th>
+                        <th data-field="color">颜色</th>
+                        <th data-field="efficiency">功效</th>
+
+                        <th data-field="weight">重量</th>
+                        <th data-field="volume">体积</th>
+                        <th data-visible="false" data-field="meetingId">id</th>
+                        <th data-visible="false" data-field="peopleNum">num</th>
+                        <th data-visible="false" data-field="meetingNotes">notes</th>
+                        <th data-visible="false" data-field="data">notes</th>
+                        <th data-events="operateEvent" class="col-xs-2" data-field="operation"
+                            data-formatter="operateFormatter">操作
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+                <div class="page-header">
+                    <h2>可用车辆信息</h2>
+                </div>
+                <table id="tableResver2"
+                       class="table table-striped"
+                       data-toggle="table"
+                       data-show-columns="true"
+                       data-search="true"
+                       data-show-refresh="true"
+                       data-show-toggle="true"
+                       data-pagination="true"
+                       data-page-size="10"
+                       data-cache="false">
+                    <thead>
+                    <tr>
+                        <th data-field="id">编号</th>
+                        <th data-field="volum">车承重</th>
+                        <th data-field="name">负责人</th>
+                        <th data-field="tele">电话</th>
+                        <th data-visible="false" data-field="meetingId">id</th>
+                        <th data-visible="false" data-field="peopleNum">num</th>
+                        <th data-visible="false" data-field="meetingNotes">notes</th>
+                        <th data-visible="false" data-field="data">notes</th>
+                        <th data-events="operateEvent" class="col-xs-2" data-field="operation"
+                            data-formatter="operateFormatter">操作
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+                <div class="page-header2">
+                    <h2>路径规划</h2>
+                    <form id="defaultForm1" method="post" class="form-horizontal" action="dataaddress.do">
+                    <div class="form-group">
+                        <div class="col-lg-offset-5 col-lg-3">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+        <!-- :form -->
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function() {
+        $(function () {
+            $.ajax({//未来七天我要参加的会议
+                type: "POST",
+                url: "/getmsg.do",
+                cache: false,
+                timeout:5000,
+                complete: function () {
+                    if(status=='timeout'){
+                        alert("超时");
+                    }
+                },
+                data: {fun: 0},
+                dataType: 'json',
+                success: function (data) {
+                    $('#tableResver').bootstrapTable('load', data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown)
+
+                }
+            });
+
+        });
+        $(function () {
+            $.ajax({//未来七天我要参加的会议
+                type: "POST",
+                url: "/getcar.do",
+                cache: false,
+                timeout:5000,
+                complete: function () {
+                    if(status=='timeout'){
+                        alert("超时");
+                    }
+                },
+                data: {fun: 0},
+                dataType: 'json',
+                success: function (data) {
+                    $('#tableResver2').bootstrapTable('load', data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown)
+
+                }
+            });
+
+        });
+        $(function () {
+            $.ajax({//未来七天我要参加的会议
+                type: "POST",
+                url: "/getpro.do",
+                cache: false,
+                timeout:5000,
+                complete: function () {
+                    if(status=='timeout'){
+                        alert("超时");
+                    }
+                },
+                data: {fun: 0},
+                dataType: 'json',
+                success: function (data) {
+                    $('#tableResver1').bootstrapTable('load', data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown)
+
+                }
+            });
+
+        });
+
+        $('.addButton').on('click', function() {
+            var index = $(this).data('index');
+            if (!index) {
+                index = 0;
+                $(this).data('index', 0);
+            }
+            index++;
+            $(this).data('index', index);
+
+            var template     = $(this).attr('data-template'),
+                $templateEle = $('#' + template + 'Template'),
+                $row         = $templateEle.clone().removeAttr('id').insertBefore($templateEle).removeClass('hide'),
+                $el          = $row.find('input').eq(0).attr('name', template + '[]');
+            $('#defaultForm').bootstrapValidator('addField', $el);
+
+            // Set random value for checkbox and textbox
+            if ('checkbox' == $el.attr('type') || 'radio' == $el.attr('type')) {
+                $el.val('Choice #' + index)
+                    .parent().find('span.lbl').html('Choice #' + index);
+            } else {
+                $el.attr('placeholder', 'Textbox #' + index);
+            }
+
+            $row.on('click', '.removeButton', function(e) {
+                $('#defaultForm').bootstrapValidator('removeField', $el);
+                $row.remove();
+            });
+        });
+
+        $('#defaultForm')
+            .bootstrapValidator({
+                message: 'This value is not valid',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    'textbox[]': {
+                        validators: {
+                            notEmpty: {
+                                message: 'The textbox field is required'
+                            }
+                        }
+                    },
+                    'checkbox[]': {
+                        validators: {
+                            notEmpty: {
+                                message: 'The checkbox field is required'
+                            }
+                        }
+                    },
+                    'radio[]': {
+                        validators: {
+                            notEmpty: {
+                                message: 'The radio field is required'
+                            }
+                        }
+                    }
+                }
+            })
+            .on('error.field.bv', function(e, data) {
+                //console.log('error.field.bv -->', data.element);
+            })
+            .on('success.field.bv', function(e, data) {
+                //console.log('success.field.bv -->', data.element);
+            })
+            .on('added.field.bv', function(e, data) {
+                //console.log('Added element -->', data.field, data.element);
+            })
+            .on('removed.field.bv', function(e, data) {
+                //console.log('Removed element -->', data.field, data.element);
+            });
+    });
+</script>
+</body>
+</html>
