@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.heitian.ssm.dao.ProductDao">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.heitian.ssm.model.Product">
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="BIGINT"/>
+        <result column="color" property="color" jdbcType="VARCHAR"/>
+        <result column="efficiency" property="efficiency" jdbcType="VARCHAR"/>
+        <result column="weight" property="weight" jdbcType="DOUBLE"/>
+        <result column="weight2" property="weight2" jdbcType="DOUBLE"/>
+        <result column="maoweight" property="maoweight" jdbcType="DOUBLE"/>
+        <result column="maoweight2" property="maoweight2" jdbcType="DOUBLE"/>
+        <result column="sizechang" property="sizechang" jdbcType="DOUBLE"/>
+        <result column="sizekuan" property="sizekuan" jdbcType="DOUBLE"/>
+        <result column="sizegao" property="sizegao" jdbcType="DOUBLE"/>
+        <result column="size2chang" property="size2chang" jdbcType="DOUBLE"/>
+        <result column="size2kuan" property="size2kuan" jdbcType="BIGINT"/>
+        <result column="size2gao" property="size2gao" jdbcType="BIGINT"/>
+        <result column="volume" property="volume" jdbcType="DOUBLE"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        name,
+        type,
+        money,
+        color,
+        efficiency,
+        weight,
+        weight2,
+        maoweight,
+        maoweight2,
+        sizechang,
+        sizekuan,
+        sizegao,
+        size2chang,
+        size2kuan,
+        size2gao,
+        volume
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="product.id">
+        INSERT INTO product (
+            id,
+            name,
+            type,
+            money,
+            color,
+            efficiency,
+            weight,
+            weight2,
+            maoweight,
+            maoweight2,
+            sizechang,
+            sizekuan,
+            sizegao,
+            size2chang,
+            size2kuan,
+            size2gao,
+            volume
+        ) VALUES (
+            #{product.id,jdbcType=BIGINT},
+            #{product.name,jdbcType=VARCHAR},
+            #{product.type,jdbcType=VARCHAR},
+            #{product.money,jdbcType=BIGINT},
+            #{product.color,jdbcType=VARCHAR},
+            #{product.efficiency,jdbcType=VARCHAR},
+            #{product.weight,jdbcType=DOUBLE},
+            #{product.weight2,jdbcType=DOUBLE},
+            #{product.maoweight,jdbcType=DOUBLE},
+            #{product.maoweight2,jdbcType=DOUBLE},
+            #{product.sizechang,jdbcType=DOUBLE},
+            #{product.sizekuan,jdbcType=DOUBLE},
+            #{product.sizegao,jdbcType=DOUBLE},
+            #{product.size2chang,jdbcType=DOUBLE},
+            #{product.size2kuan,jdbcType=BIGINT},
+            #{product.size2gao,jdbcType=BIGINT},
+            #{product.volume,jdbcType=DOUBLE}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="product.id">
+        INSERT INTO product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="product.id!=null"> id,</if>
+            <if test="product.name!=null"> name,</if>
+            <if test="product.type!=null"> type,</if>
+            <if test="product.money!=null"> money,</if>
+            <if test="product.color!=null"> color,</if>
+            <if test="product.efficiency!=null"> efficiency,</if>
+            <if test="product.weight!=null"> weight,</if>
+            <if test="product.weight2!=null"> weight2,</if>
+            <if test="product.maoweight!=null"> maoweight,</if>
+            <if test="product.maoweight2!=null"> maoweight2,</if>
+            <if test="product.sizechang!=null"> sizechang,</if>
+            <if test="product.sizekuan!=null"> sizekuan,</if>
+            <if test="product.sizegao!=null"> sizegao,</if>
+            <if test="product.size2chang!=null"> size2chang,</if>
+            <if test="product.size2kuan!=null"> size2kuan,</if>
+            <if test="product.size2gao!=null"> size2gao,</if>
+            <if test="product.volume!=null"> volume,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="product.id!=null">#{product.id,jdbcType=BIGINT},
+            </if>
+            <if test="product.name!=null">#{product.name,jdbcType=VARCHAR},
+            </if>
+            <if test="product.type!=null">#{product.type,jdbcType=VARCHAR},
+            </if>
+            <if test="product.money!=null">#{product.money,jdbcType=BIGINT},
+            </if>
+            <if test="product.color!=null">#{product.color,jdbcType=VARCHAR},
+            </if>
+            <if test="product.efficiency!=null">#{product.efficiency,jdbcType=VARCHAR},
+            </if>
+            <if test="product.weight!=null">#{product.weight,jdbcType=DOUBLE},
+            </if>
+            <if test="product.weight2!=null">#{product.weight2,jdbcType=DOUBLE},
+            </if>
+            <if test="product.maoweight!=null">#{product.maoweight,jdbcType=DOUBLE},
+            </if>
+            <if test="product.maoweight2!=null">#{product.maoweight2,jdbcType=DOUBLE},
+            </if>
+            <if test="product.sizechang!=null">#{product.sizechang,jdbcType=DOUBLE},
+            </if>
+            <if test="product.sizekuan!=null">#{product.sizekuan,jdbcType=DOUBLE},
+            </if>
+            <if test="product.sizegao!=null">#{product.sizegao,jdbcType=DOUBLE},
+            </if>
+            <if test="product.size2chang!=null">#{product.size2chang,jdbcType=DOUBLE},
+            </if>
+            <if test="product.size2kuan!=null">#{product.size2kuan,jdbcType=BIGINT},
+            </if>
+            <if test="product.size2gao!=null">#{product.size2gao,jdbcType=BIGINT},
+            </if>
+            <if test="product.volume!=null">#{product.volume,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO product (
+        <include refid="Base_Column_List"/>
+        )VALUES
+        <foreach collection="products" item="product" index="index" separator=",">
+            (
+            #{product.id,jdbcType=BIGINT},
+            #{product.name,jdbcType=VARCHAR},
+            #{product.type,jdbcType=VARCHAR},
+            #{product.money,jdbcType=BIGINT},
+            #{product.color,jdbcType=VARCHAR},
+            #{product.efficiency,jdbcType=VARCHAR},
+            #{product.weight,jdbcType=DOUBLE},
+            #{product.weight2,jdbcType=DOUBLE},
+            #{product.maoweight,jdbcType=DOUBLE},
+            #{product.maoweight2,jdbcType=DOUBLE},
+            #{product.sizechang,jdbcType=DOUBLE},
+            #{product.sizekuan,jdbcType=DOUBLE},
+            #{product.sizegao,jdbcType=DOUBLE},
+            #{product.size2chang,jdbcType=DOUBLE},
+            #{product.size2kuan,jdbcType=BIGINT},
+            #{product.size2gao,jdbcType=BIGINT},
+            #{product.volume,jdbcType=DOUBLE}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE product
+        <set>
+            <if test="product.id != null"> id= #{product.id,jdbcType=BIGINT},</if>
+            <if test="product.name != null"> name= #{product.name,jdbcType=VARCHAR},</if>
+            <if test="product.type != null"> type= #{product.type,jdbcType=VARCHAR},</if>
+            <if test="product.money != null"> money= #{product.money,jdbcType=BIGINT},</if>
+            <if test="product.color != null"> color= #{product.color,jdbcType=VARCHAR},</if>
+            <if test="product.efficiency != null"> efficiency= #{product.efficiency,jdbcType=VARCHAR},</if>
+            <if test="product.weight != null"> weight= #{product.weight,jdbcType=DOUBLE},</if>
+            <if test="product.weight2 != null"> weight2= #{product.weight2,jdbcType=DOUBLE},</if>
+            <if test="product.maoweight != null"> maoweight= #{product.maoweight,jdbcType=DOUBLE},</if>
+            <if test="product.maoweight2 != null"> maoweight2= #{product.maoweight2,jdbcType=DOUBLE},</if>
+            <if test="product.sizechang != null"> sizechang= #{product.sizechang,jdbcType=DOUBLE},</if>
+            <if test="product.sizekuan != null"> sizekuan= #{product.sizekuan,jdbcType=DOUBLE},</if>
+            <if test="product.sizegao != null"> sizegao= #{product.sizegao,jdbcType=DOUBLE},</if>
+            <if test="product.size2chang != null"> size2chang= #{product.size2chang,jdbcType=DOUBLE},</if>
+            <if test="product.size2kuan != null"> size2kuan= #{product.size2kuan,jdbcType=BIGINT},</if>
+            <if test="product.size2gao != null"> size2gao= #{product.size2gao,jdbcType=BIGINT},</if>
+            <if test="product.volume != null"> volume= #{product.volume,jdbcType=DOUBLE}</if>
+        </set>
+        WHERE id = #{product.id,jdbcType=BIGINT}
+    </update>
+
+<!--auto generated by codehelper on 2018-01-19 15:38:33-->
+	<select id="findbyId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from product
+        where id=#{id,jdbcType=BIGINT}
+    </select>
+
+<!--auto generated by codehelper on 2018-01-19 15:48:33-->
+	<select id="find" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from product
+    </select>
+</mapper>
+
